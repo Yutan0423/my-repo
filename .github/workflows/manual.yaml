@@ -2,10 +2,26 @@ name: Manual
 on:
   workflow_dispatch:
     inputs:
-      greeting:
-        description: 'Person to greet'
+      log-level:
+        type: choice
+        description: 'Log level'
         required: true
-        default: 'Hello'
+        default: 'info'
+        options:
+          info:
+            description: 'Info'
+          warning:
+            description: 'Warning'
+          error:
+            description: 'Error'
+          debug:
+            description: 'Debug'
+          critical:
+            description: 'Critical'
+          alert:
+            description: 'Alert'
+          emergency:
+            description: 'Emergency'
 jobs:
   hello:
     runs-on: ubuntu-latest
