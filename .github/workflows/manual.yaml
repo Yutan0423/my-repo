@@ -8,20 +8,9 @@ on:
         required: true
         default: 'info'
         options:
-          info:
-            description: 'Info'
-          warning:
-            description: 'Warning'
-          error:
-            description: 'Error'
-          debug:
-            description: 'Debug'
-          critical:
-            description: 'Critical'
-          alert:
-            description: 'Alert'
-          emergency:
-            description: 'Emergency'
+          - info
+          - warning
+          - error
 jobs:
   hello:
     runs-on: ubuntu-latest
