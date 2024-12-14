@@ -1,8 +1,12 @@
 name: Conditions
 on: push
 jobs:
-  skip-or-run:
-    if: ${{ github.actor == 'octocat' }}
+  share:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello"
+      - id: source
+        run: echo "result=hogehoge" >> "${GITHUB_OUTPUT}"
+      - env:
+          RESULT: ${{ steps.source.outputs.result }}
+        run: echo $RESULT
+    
