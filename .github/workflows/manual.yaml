@@ -1,20 +1,12 @@
-name: Manual
-on:
-  workflow_dispatch:
-    inputs:
-      log-level:
-        type: choice
-        description: 'Log level'
-        required: true
-        default: 'info'
-        options:
-          - info
-          - warning
-          - error
+name: Contexts
+on: push
 jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Hello, world!
-      - uses: actions/checkout@v4
+      - run: echo "${{ github.actor }}"
+      - run: echo "${{ github.event_name }}"
+      - run: echo "${{ github.event }}"
+      - run: echo "${{ github.repository }}"
+      - run: echo "${{ github.workspace }}"
    
