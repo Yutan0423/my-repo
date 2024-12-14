@@ -6,7 +6,10 @@ jobs:
     steps:
       - run: echo "${{ github.actor }}"
       - run: echo "${{ github.event_name }}"
-      - run: echo "${{ github.event }}"
+      - run: echo "${{ github.event.pull_request.title }}"
       - run: echo "${{ github.repository }}"
-      - run: echo "${{ github.workspace }}"
+      - run: echo "${{ runner.os }} ${{ runner.os_version }}"
+      - run: echo "${{ runner.arch }}"
+      - run: echo "${{ runner.debug }}"
+      - run: echo "${{ GITHUB_GRAPHQL_URL }}"
    
