@@ -1,12 +1,13 @@
-name: Conditions
-on: push
+name: Comment
+on: pull_request
 jobs:
-  share:
+  comment:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-      - id: source
-        run: echo "result=hogehoge" >> "${GITHUB_OUTPUT}"
-      - env:
-          RESULT: ${{ steps.source.outputs.result }}
-        run: echo $RESULT
-    
+      - uses: actions/checkout@v4
+      - run: gh pr comment ${GITHUB_HEAD_REF} --body "Hello, world!, ${GITHUB_ACTOR}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
