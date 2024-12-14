@@ -11,5 +11,5 @@ jobs:
       - run: echo "${{ runner.os }} ${{ runner.os_version }}"
       - run: echo "${{ runner.arch }}"
       - run: echo "${{ runner.debug }}"
-      - run: echo "${{ GITHUB_API_URL }}"
+      - run: echo "${GITHUB_API_URL}"
    
