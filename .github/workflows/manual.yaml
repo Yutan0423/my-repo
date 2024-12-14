@@ -1,4 +1,4 @@
-name: Contexts
+name: Compare functions
 on: push
 jobs:
   hello:
@@ -6,15 +6,13 @@ jobs:
     env:
       PASS: ${{ secrets.PASS }}
     steps:
-      - run: echo "${{ github.actor }}"
-      - run: echo "${{ github.event_name }}"
-      - run: echo "${{ github.event.pull_request.title }}"
-      - run: echo "${{ github.repository }}"
-      - run: echo "${{ runner.os }} ${{ runner.os_version }}"
-      - run: echo "${{ runner.arch }}"
-      - run: echo "${{ runner.debug }}"
-      - run: echo "${GITHUB_API_URL}"
-      - run: echo "${{ vars.USERNAME }}"
-      - run: echo "${PASS}"
-      - run: echo "${PASS:0:1} ${PASS#?}"
-   
+      - run: printenv | grep '_FUNC'
+        env:
+          CONTAINS_FUNC: ${{ contains('Hello', 'ell') }}
+          STARTS_WITH_FUNC: ${{ startsWith('Hello', 'He') }}
+          ENDS_WITH_FUNC: ${{ endsWith('Hello', 'lo') }}
+          FORMAT_FUNC: ${{ format('Hello', 'World') }}
+          JOIN_FUNC: ${{ join(github.event.*.html_url, ', ') }}
+      - run echo "${CONTEXT}"
+        env:
+          CONTEXT: ${{ toJson(github) }}
