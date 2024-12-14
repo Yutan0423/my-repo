@@ -13,6 +13,6 @@ jobs:
           ENDS_WITH_FUNC: ${{ endsWith('Hello', 'lo') }}
           FORMAT_FUNC: ${{ format('Hello', 'World') }}
           JOIN_FUNC: ${{ join(github.event.*.html_url, ', ') }}
-      - run echo "${CONTEXT}"
+      - run: echo "${CONTEXT}"
         env:
           CONTEXT: ${{ toJson(github) }}
