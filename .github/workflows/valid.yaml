@@ -1,6 +1,6 @@
 name: Static Analysis
 on:
-  pull_request:
+  push:
     paths:
       - '.github/workflows/valid.yaml'
 defaults:

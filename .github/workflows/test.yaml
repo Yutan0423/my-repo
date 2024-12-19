@@ -1,6 +1,6 @@
-name: Test
+name: GoTest
 on:
-  pull_request:
+  push:
     paths: 'go/**/*.go'
 jobs:
   comment:
