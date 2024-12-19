@@ -1,0 +1,16 @@
+name: ChangeShell
+on: push
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 40
+      - shell: bash
+        run: echo "${SHELL}"
+      - shell: python
+        run: |
+          import os
+          print(os.environ['PATH'])
